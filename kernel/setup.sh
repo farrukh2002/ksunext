@@ -38,7 +38,7 @@ perform_cleanup() {
 setup_kernelsu() {
     echo "[+] Setting up KernelSU-Next..."
     if [ ! -d "$GKI_ROOT/KernelSU-Next" ]; then
-        git clone -b susfs-next https://github.com/farrukh2002/ksunext/ksunext.git KernelSU-Next && echo "[+] Repository cloned."
+        git clone -b susfs-next https://github.com/farrukh2002/ksunext.git KernelSU-Next && echo "[+] Repository cloned."
     fi
     cd "$GKI_ROOT/KernelSU-Next"
     git stash && echo "[-] Stashed current changes."
