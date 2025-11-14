@@ -19,7 +19,7 @@ on:
   workflow_call:
 jobs:
   build-kernel:
-    if: github.event_name != 'pull_request' && github.ref != 'refs/heads/next'
+    if: github.event_name != 'pull_request' && (github.event_name == 'workflow_dispatch' || github.ref != 'refs/heads/next')
     strategy:
       matrix:
         include:
