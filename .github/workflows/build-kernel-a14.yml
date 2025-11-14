@@ -15,6 +15,7 @@ on:
       - ".github/workflows/gki-kernel.yml"
       - ".github/scripts/build-a13.sh"
       - "kernel/**"
+  workflow_dispatch:
   workflow_call:
 jobs:
   build-kernel:
