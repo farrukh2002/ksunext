@@ -116,6 +116,16 @@ jobs:
           repo --trace sync -c -j$(nproc --all) --no-tags
           df -h
 
+      - name: Override Kernel Name
+        run: |
+          cd $GITHUB_WORKSPACE/android-kernel/common
+          if [ "${{ inputs.version_name }}" = "android14-6.1.78" ] || [ "${{ inputs.version_name }}" = "android14-6.1.115" ]; then
+            echo 'LOCALVERSION="-android14-11-kj98efa8763265-ab25486574"' >> build.config.gki.aarch64
+            if [ "${{ inputs.version_name }}" = "android14-6.1.115" ]; then
+              sed -i 's/^SUBLEVEL = .*/SUBLEVEL = 78/' Makefile
+            fi
+          fi
+
       - name: Setup KernelSU-Next
         env:
           PATCH_PATH: ${{ inputs.patch_path }}
